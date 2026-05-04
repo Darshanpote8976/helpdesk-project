@@ -25,14 +25,33 @@ const roleBadge: Record<string, string> = {
   Agent: "bg-primary-light text-primary",
 };
 
-export default function AppSidebar() {
+export default function AppSidebar({
+  isSidebarOpen,
+  setIsSidebarOpen,
+}: {
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (value: boolean) => void;
+}) {
   const { user, logout } = useAuth();
   const location = useLocation();
   const ticketCount = getTickets().length;
   const navItems = ALL_NAV.filter(item => user && item.roles.includes(user.role));
 
   return (
-    <aside className="w-60 min-w-[240px] h-screen bg-card border-r flex flex-col fixed left-0 top-0 z-30">
+   <aside
+  className={`
+    fixed top-0 left-0 h-full w-60 min-w-[240px] bg-card border-r flex flex-col z-40
+    transform transition-transform duration-300
+    ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+    md:translate-x-0 md:flex
+  `}
+>
+  {isSidebarOpen && (
+  <div
+    className="fixed inset-0 bg-black/40 z-30 md:hidden"
+    onClick={() => setIsSidebarOpen(false)}
+  />
+)}
       <div className="px-5 py-5 flex items-center gap-2 border-b">
         <Shield className="h-6 w-6 text-primary" />
         <span className="text-lg font-bold text-foreground tracking-tight"><span className="text-lg font-bold text-foreground tracking-tight">HelpDesk</span></span>

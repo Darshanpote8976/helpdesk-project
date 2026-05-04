@@ -123,6 +123,6 @@ export const DEPT_COLORS: Record<string, { bg: string; text: string; border: str
   access: { bg: "bg-corp-amber-light", text: "text-corp-amber", border: "border-corp-amber" },
 };
 
-export const WEBHOOK_URL = "http://localhost:5678/webhook/internal-request";
-export const STATUS_WEBHOOK = "http://localhost:5678/webhook/status-update";
+export const WEBHOOK_URL = "https://chair-passably-gambling.ngrok-free.dev/webhook/internal-request";
+export const STATUS_WEBHOOK = "https://chair-passably-gambling.ngrok-free.dev/webhook/status-update";
 export const API_KEY = "Darshan_2026_KEY";

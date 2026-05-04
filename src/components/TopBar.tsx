@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Search, CheckCircle2, Plus, LogOut, User } from "lucide-react";
+import { Search, CheckCircle2, Plus, LogOut, User, Menu} from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { getTickets, CATEGORIES, type Ticket } from "@/lib/tickets";
 
@@ -45,7 +45,7 @@ const statusColors: Record<string, string> = {
   new: "text-primary",
 };
 
-export default function TopBar() {
+export default function TopBar({ setIsSidebarOpen }: { setIsSidebarOpen: (value: boolean) => void }) {
   const location = useLocation();
   const navigate = useNavigate();
   const { user, logout } = useAuth();
@@ -125,6 +125,12 @@ export default function TopBar() {
           </div>
         )}
       </div>
+      <button
+  className="md:hidden p-2 mr-2 rounded-lg border"
+  onClick={() => setIsSidebarOpen(true)}
+>
+  <Menu className="w-5 h-5" />
+</button>
       <div className="flex items-center gap-3 ml-auto">
         <span className="flex items-center gap-1.5 text-label-badge font-medium text-corp-green bg-corp-green-light px-2.5 py-1 rounded-full">
           <CheckCircle2 className="h-3.5 w-3.5" /> All Systems Operational

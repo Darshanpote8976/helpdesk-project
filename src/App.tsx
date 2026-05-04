@@ -45,7 +45,7 @@ function AuthGate() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
-        <Route path="/" element={<DashboardPage />} />
+      <Route index element={<DashboardPage />} />
         <Route path="/submit" element={<SubmitRequestPage />} />
         <Route path="/operations" element={<RoleGuard roles={ROUTE_ROLES["/operations"]}><OperationsPage /></RoleGuard>} />
         <Route path="/my-tickets" element={<RoleGuard roles={ROUTE_ROLES["/my-tickets"]}><MyTicketsPage /></RoleGuard>} />
